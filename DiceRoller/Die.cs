@@ -28,7 +28,16 @@ public class Die
                 , $"{nameof(_NumberOfSides)} must be between 1 and 255.");
         }
         NumberOfSides = _NumberOfSides;
+
+        FaceUpValue = Roll();
     }
+
+    /// <summary>
+    /// A random number generator used to simulate rolling the die.
+    /// The random number generator is static so that it is shared between
+    /// all instances of the Die class.
+    /// </summary>
+    private static readonly Random rand = new Random();
 
     /// <summary>
     /// The number of sides on the die.
@@ -37,8 +46,20 @@ public class Die
     /// </summary>
     public byte NumberOfSides { get; private set; } = 6;
 
-    public int Roll()
+    /// <summary>
+    /// The current face-up value of the die.
+    /// </summary>
+    public byte FaceUpValue { get; private set; }
+
+    /// <summary>
+    /// This method simulates rolling the die.
+    /// The result is stored in the FaceUpValue property
+    /// The Result is also returned as an integer.
+    /// </summary>
+    /// <returns>A byte representing the face-up value of the die</returns>
+    public byte Roll()
     {
-        throw new NotImplementedException("The method Roll() is not implemented yet.");
+        FaceUpValue = (byte) rand.Next(1, NumberOfSides + 1);
+        return FaceUpValue;
     }
 }
