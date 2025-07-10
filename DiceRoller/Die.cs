@@ -46,7 +46,7 @@ public class Die
     /// can be set to any value between 1 and 255 inclusive.
     /// default is 6.
     /// </summary>
-    public byte NumberOfSides { get; private set; } = 6;
+    public byte NumberOfSides { get; init; } = 6;
 
     /// <summary>
     /// The current face-up value of the die.
